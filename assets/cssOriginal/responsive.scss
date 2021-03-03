@@ -664,7 +664,10 @@ $blue: rgb(0, 85, 128);
     
                         .item-name {
                             position: relative;
-                            h4 {font-size: 20px;}
+                            h4 {
+                                font-size: 20px;
+                                color: $blue;
+                            }
                         }
                     }
     
