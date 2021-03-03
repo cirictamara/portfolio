@@ -1,0 +1,922 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+
+html {scroll-behavior: smooth;}
+
+$startColor: rgba(255, 255, 255, 0.4);
+$endColor: rgba(255, 255, 255, 0);
+$black: rgb(0, 0, 0);
+$white: rgb(255, 255, 255);
+$transparent: transparent;
+$red: rgb(255, 51, 51);
+$blue: rgb(0, 85, 128);
+$grey: rgb(224, 224, 209);
+$transparentWhite: rgba(255, 255, 255, 0.3);
+$transparentText: rgba(255, 255, 255, 0.6);
+
+* {
+	padding: 0;
+	margin: 0;
+	font-family: 'Montserrat', sans-serif;
+}
+
+@mixin position ($position, $z-index) {
+    position: $position;
+	z-index: $z-index;
+}
+
+@mixin flex-container ($flex-direction, $justify-content, $align-items) {
+	display: flex;
+	flex-direction: $flex-direction;
+	justify-content: $justify-content;
+	align-items: $align-items;
+}
+
+@mixin clip-path ($shape) {clip-path: $shape;}
+
+@mixin square ($dimension) {
+    width: $dimension;
+    height: $dimension;
+}
+
+@mixin circle ($dimension, $z-index) {
+    @include square ($dimension);
+    @include position (absolute, $z-index);
+    border-radius: 50%;
+}
+
+@mixin project ($height) {
+    width: 100%;
+    height: $height;
+}
+
+@mixin font ($size, $weight) {
+    font: {
+        size: $size;
+        weight: $weight;
+    }
+}
+
+@mixin gradient-text ($background) {
+    background: $background;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+ul {
+    list-style-type: none;
+    @include flex-container (row, center, center);
+}
+
+a {text-decoration: none;}
+img {width: 100%;}
+span {display: block;}
+
+// HEADER 
+#header {
+    width: 100%;
+    @include position (absolute, 3);
+    top: 0;
+    padding: 10px 0;
+    #logo {
+        width: 210px;
+	    margin-left: 7%;
+    }
+}
+
+// MAIN
+#main {
+    width: 100%;
+
+    // Section header
+    .section-header {
+        width: calc(100% - 80px);
+        text-align: center;
+        padding: 0 40px;
+
+        h2 {
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            @include font (23px, 800);
+            color: $red;
+        }
+
+        h3 {
+            margin-top: 5px;
+            @include font (27px, 500);
+        }
+    }
+
+    // Section main
+    .section-main {
+        width: 100%;
+        margin-top: 80px;
+    }
+
+    // Home
+    #home {
+        width: 100%;
+        height: 70vh;
+        @include position (relative, 0);
+        @include flex-container (column, space-between, center);
+        background: linear-gradient(to right, $blue, $grey, $blue);
+
+        &::after {
+            content: "";
+            display: block;
+            width: 100%;
+            @include position (absolute, 0);
+            height: 4px;
+            bottom: -2px;
+            background-color: $red;
+        }
+
+        #title-1 {
+            width: auto;
+            @include position (relative, 0);
+            top: 30%;
+
+            h2 {
+                font-size: 25px;
+                letter-spacing: 2px;
+                &::after {
+                    display: block;
+                    content: " ";
+                    width: 100%;
+                    height: 0.6px;
+                    margin: 8px 0 10px;
+                    background-color: $black;
+                }
+            }
+            
+            h1 {
+                span {
+                    font-size: 45px;
+                    letter-spacing: 2px;
+                    mark {
+                        background-color: $transparent;
+                        @include gradient-text (linear-gradient(to left, $red, $black));
+                    }
+                }
+            }
+        }
+
+        #title-2 {
+            width: auto; 
+            @include position (relative, 0); 
+            text-align: center;
+            top: 16%;
+            h2 {
+                span {
+                    letter-spacing: 1px;
+                    @include font (22px, 400);
+                }
+            }
+        }
+
+        #menu {
+            width: auto;
+            @include position (relative, 1); 
+            @include flex-container (row, center, center);
+            bottom: -65px;
+
+            #menu-button {
+                @include flex-container (row, center, center);
+                display: none;
+                text-align: center;
+            }
+
+            .menu-item {
+                margin-right: 25px;
+                @include clip-path (circle(49% at 50% 50%));
+                background-color: $grey;
+
+                &:last-child {margin-right: 0;}
+
+                a {
+                    @include square (130px);
+                    @include flex-container (row, center, center);
+                    @include position (relative, 0);
+
+                    .animated-icon {width: 50%;}
+
+                    .item-name {
+                        @include position (absolute, 2);
+                        h4 {@include font (20px, 600); }
+                    }
+                }
+
+                &:not(.active) .item-name {display: none;}
+
+                &.active {
+                    .item-name {color: $red;}
+                    & .animated-icon {display: none;}
+                }
+
+                &:hover {
+                    & .animated-icon {display: none;}
+                    & .item-name {
+                        display: block;
+                        color: $red;
+                    }
+                }
+            }
+        }
+    }
+
+    // About
+
+    @mixin table {
+        width: 100%;
+        text-align: center;
+        thead {
+            th {
+                letter-spacing: 1px;
+                padding-bottom: 15px;
+                @include font (22px, 600);
+                @include gradient-text (linear-gradient(to right, $red, $black));
+            }
+        }
+    
+        tbody {
+            td {font-size: 20px;}
+        }
+    }
+    
+    @mixin table-td {
+        font-weight: 500;
+        padding: 5px 0;
+    }
+
+    #about {
+        width: 100%;
+        padding: 120px 0 70px;
+        background: linear-gradient(to right, $grey, $white, $grey);
+
+        .section-main {
+            @include flex-container (row, center, center);
+
+            #web-developer {
+                width: 35%;
+                @include flex-container (row, center, center);
+                @include position (relative, 0);
+
+                #web-developer-image {
+                    width: 100%;
+                    @include clip-path (circle(42% at 50% 50%));
+                    img {filter: grayscale(100%);}
+                    background: $grey;
+                }
+
+                #text-1 {
+                    @include position (absolute, 1);
+                    left: 2.5%;
+                    @include font (55px, 500);
+                    @include gradient-text (linear-gradient(to right, $blue, $black));
+                }
+
+                #text-2 {
+                    @include position (absolute, 1);
+                    width: 45%;
+                    top: 58%;
+                    left: 1.5%;
+                    text-align: center;
+                    mark {
+                        font-size: 20px;
+                        padding: 2px 5px;
+                        line-height: 32px;
+                        background-color: $blue;
+                        color: $grey;
+                    }
+                }
+
+                #download-cv {
+                    width: auto;
+                    text-align: center;
+                    @include position (absolute, 1);
+                    @include clip-path (polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%));
+                    background: $black;
+                    top: 39%;
+                    right: 0;
+                    a {
+                        p {
+                            padding: 20px 25px;
+                            letter-spacing: 1px;
+                            @include font (18px, 500);
+                            color: $transparentText;
+                        }
+                    }
+
+                    &:hover {background-color: $red;}
+                }
+            }
+
+            #personal-details {
+                width: 20%;
+                margin: 0 2%;
+                table {
+                    @include table;
+                    tbody {
+                        tr {
+                            td {
+                                &.detail {@include table-td;}
+                            }
+                        }
+                    }
+                }
+            }
+
+            #education-and-languages {
+                width: 19%;
+
+                #education {
+                    width: 100%;
+                    margin-bottom: 30px;
+                    table {
+                        @include table;
+                        tbody {
+                            tr {
+                                td {
+                                    &.year {
+                                        @include table-td;
+                                        letter-spacing: 1px;
+                                        font-size: 22px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                #languages-skills {
+                    width: 60%;
+                    margin: 0 auto;
+                    table {
+                        @include table;
+                        tbody {
+                            tr {
+                                &:nth-child(2) {
+                                    td {padding: 5px 0;}
+                                }
+                                td {
+                                    &.language {font-weight: 500;}
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // Skills
+
+    #skills {
+        width: 100%;
+        padding: 50px 0;
+        background-color: $blue;
+        
+       .section-main {
+            #all-skills {
+                width: 100%;
+                @include flex-container (row, center, flex-start);
+
+                .my-skills {
+                    width: auto;
+                    @include flex-container (row, center, flex-start);
+
+                    &:nth-child(2) {margin: 0 30px;}
+
+                    .skill {
+                        width: 140px;
+                        height: 220px;
+                        @include flex-container (column, flex-start, center);                       
+                        text-align: center;
+
+                        &:nth-child(2) {margin: 0 30px;}
+                        
+                        .circle-wrap {
+                            @include square (140px);
+                            @include position (relative, 0);
+                            border-radius: 50%;
+                            background-color: $transparentWhite;
+
+                            .circle {
+                                .mask {
+                                    @include circle (140px, 0);
+                                    clip: rect(0px, 140px, 140px, 70px);
+
+                                    .fill {
+                                        @include circle (140px, 0);
+                                        clip: rect(0px, 70px, 140px, 0px);
+                                        background-color: $red; 
+                                    }
+                                }
+                            }
+
+                            .inside-circle {
+                                @include circle (120px, 1);
+                                top: 10px;
+                                left: 10px;
+                                background-color: $grey;
+                                @include flex-container(row, center, center);
+                                p {
+                                    letter-spacing: 1px;
+                                    @include font (25px, 600);
+                                    @include gradient-text (linear-gradient(to right, $red, $black));
+                                }
+                            }
+
+                            &:hover {
+                                .mask {
+                                    .fill {animation: fill ease-out 2s;}
+                                    &.full {animation: fill ease-out 2s;}
+                                }
+                            }
+                        }
+
+                        .skill-name {
+                            margin-top: 25px;
+                            p {
+                                letter-spacing: 1px;
+                                @include font (19.5px, 500);
+                                color: $transparentText;
+                            }
+                        }
+                    }
+
+                    $i: 1;
+                    @while $i <= 9 {
+                        .skill-#{$i} {
+                            .circle-wrap {
+                                &:hover {
+                                    .mask {
+                                        @if $i == 1 {
+                                            .fill {transform: rotate(180deg);}
+                                            &.full {transform: rotate(180deg);}
+                                            @keyframes fill {
+                                                0% {transform: rotate(0deg);}
+                                                100% {transform: rotate(180deg);}
+                                            }       
+                                        }
+
+                                        @if $i == 2 {
+                                            .fill {transform: rotate(172.5deg);}
+                                            &.full {transform: rotate(172.5deg);}
+                                            @keyframes fill {
+                                                0% {transform: rotate(0deg);}
+                                                100% {transform: rotate(172.5deg);}
+                                            } 
+                                        }
+
+                                        @if $i == 3 {
+                                            .fill {transform: rotate(150deg);}
+                                            &.full {transform: rotate(150deg);}
+                                            @keyframes fill {
+                                                0% {transform: rotate(0deg);}
+                                                100% {transform: rotate(150deg);}
+                                            }       
+                                        }
+
+                                        @if $i == 4 {  
+                                            .fill {transform: rotate(172.5deg);}
+                                            &.full {transform: rotate(172.5deg);}
+                                            @keyframes fill {
+                                                0% {transform: rotate(0deg);}
+                                                100% {transform: rotate(172.5deg);}
+                                            }  
+                                        }
+
+                                        @if $i == 5 {
+                                            .fill {transform: rotate(165deg);}
+                                            &.full {transform: rotate(165deg);}
+                                            @keyframes fill {
+                                                0% {transform: rotate(0deg);}
+                                                100% {transform: rotate(165deg);}
+                                            }       
+                                        }
+
+                                        @if $i == 6 {
+                                            .fill {transform: rotate(172.5deg);}
+                                            &.full {transform: rotate(172.5deg);}
+                                            @keyframes fill {
+                                                0% {transform: rotate(0deg);}
+                                                100% {transform: rotate(172.5deg);}
+                                            }    
+                                        }
+
+                                        @if $i == 7 {
+                                            .fill {transform: rotate(135deg);}
+                                            &.full {transform: rotate(135deg);}
+                                            @keyframes fill {
+                                                0% {transform: rotate(0deg);}
+                                                100% {transform: rotate(135deg);}
+                                            }   
+                                        }
+
+                                        @if $i == 8 {  
+                                            .fill {transform: rotate(130deg);}
+                                            &.full {transform: rotate(130deg);}
+                                            @keyframes fill {
+                                                0% {transform: rotate(0deg);}
+                                                100% {transform: rotate(130deg);}
+                                            }  
+                                        }
+
+                                        @if $i == 9 {
+                                            .fill {transform: rotate(140deg);}
+                                            &.full {transform: rotate(140deg);}
+                                            @keyframes fill {
+                                                0% {transform: rotate(0deg);}
+                                                100% {transform: rotate(140deg);}
+                                            }       
+                                        }
+                                    }
+                                }
+                            } 
+                        }
+                        $i: $i + 1;
+                    }
+                }
+            }
+        }
+    }
+
+    // Services
+
+    #services {
+        width: 100%;
+        padding: 80px 0;
+        background-color: $grey;
+
+        .section-main {
+            #my-services {
+                width: 100%;
+                @include flex-container (row, center, flex-start);
+
+                .service {
+                    width: 20%;
+                    @include position (relative, 0);
+                    @include flex-container (column, center, center);
+                    margin-right: 10px;
+                    text-align: center;
+                    background-color: $transparentWhite;
+
+                    &:last-of-type {margin-right: 0;}
+
+                    .service-name {
+                        width: 100%;
+                        height: 250px;
+                        @include flex-container (column, center, center);
+
+                        i {font-size: 35px;}
+
+                        h4 {
+                            width: 55%;
+                            margin: 30px 0 10px;
+                            letter-spacing: 1px;
+                            @include font (20px, 600);
+                            @include gradient-text (linear-gradient(to right, $red, $black));
+                        }
+
+                        p {
+                            cursor: pointer;
+                            @include font (20px, 500);
+                            letter-spacing: 0.5px;
+                        }
+                    }
+
+                    .caption {
+                        @include square (calc(100% - 60px));
+                        @include position (relative, 0);
+                        padding: 30px;
+                        top: 0;
+                        display: none;
+
+                        p {font-size: 18px;}
+
+                        &::after {
+                            content: "";
+                            display: block;
+                            @include position (absolute, 0);
+                            top: 0;
+                            left: 0;
+                            width: 0;
+                            height: 100%;
+                            background-color: $startColor;
+                        }
+
+                        &:hover {
+                            &::after {
+                                width: 120%;
+                                background-color: $endColor;
+                                transition: all 0.5s ease-out;
+                            }
+                        }
+                    }
+
+                    &:hover {
+                        .service-name {display: none;}
+                        .caption {display: block;}
+                    }
+                    
+                }
+            }
+        }
+    }
+
+    // Projects
+
+    #projects {
+        width: 100%;
+        background-color: $blue;
+        padding: 50px 0;
+
+        .section-main {
+            #projects-menu {
+                width: 100%;
+                margin-bottom: 70px;
+                li {
+                    &:nth-child(2) {margin: 0 10%;}
+                    a {
+                        letter-spacing: 0.5px;
+                        @include font (20px, 600);
+                        @include gradient-text (linear-gradient(to right, $red, $black));
+                    }
+                }
+            }
+
+            #all-categories {
+                width: 100%;
+                @include flex-container (row, center, center);
+
+                .project {
+                    width: 27vw;
+                    height: calc(27vw + 100px);
+                    text-align: center;
+
+                    &:nth-child(2) {margin: 0 15px;}
+
+                    header {
+                        @include project (90px);
+                        @include flex-container (row, center, center);
+                        margin-bottom: 10px;
+
+                        h4 {
+                            span {
+                                color: $transparentText;
+                                &:first-child {
+                                    letter-spacing: 1px;
+                                    @include font (22px, 600);
+                                }
+
+                                &:last-child {
+                                    width: calc(100% - 60px);
+	                                padding: 0 30px;
+                                    @include font (19.5px, 500);
+                                }
+                            }
+                        }
+                    }
+
+                    main {
+                        margin-top: 0;
+                        @include project (27vw);
+                        @include position (relative, 0);
+
+                        .project-image {
+                            @include project (27vw);
+                            filter: grayscale(100%);
+                        }
+
+                        .view-project {
+                            @include project (27vw);
+                            @include position (absolute, 1);
+                            @include flex-container (row, center, center);
+                            top: 0;
+                            background-color: $transparentWhite;
+                            visibility: hidden;
+                            a {
+                                @include square (23%);
+                                @include flex-container (row, center, center);
+                                @include clip-path (circle(49% at 50% 50%));
+                                background-color: $black;
+                                p {
+                                    width: 80%;
+                                    @include font (19px, 600);
+                                    color: $red;
+                                }
+                            }
+                        }
+
+                        .description {
+                            width: calc(100% - 40px);
+                            @include position (absolute, 2);
+                            padding: 18px 20px;
+                            bottom: 0;
+                            display: none;
+                            p {
+                                font-size: 20px;
+                                &:first-of-type {
+                                    font-weight: 500;
+                                    margin-bottom: 3px;
+                                }
+                            }
+                        }
+
+                        &:hover {
+                            .project-image {filter: none;}
+                            .view-project {visibility: visible;}
+                            .description {display: block;}
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // Contact
+
+    @mixin form-item ($width, $height, $margin-bottom, $padding) {
+        display: block;
+        font-size: 18px;
+        width: $width;
+        height: $height;
+        margin-bottom: $margin-bottom;
+        padding: $padding;
+        background-color: $startColor;
+        border: {
+            width: 1px;
+            radius: 15px;
+            color: $blue;
+        }
+    }
+
+    #contact {
+        width: 100%;
+        padding: 80px 0;
+        @include position (relative, 0);
+        background-color: $grey;
+
+        .section-main {
+            @include flex-container (row, center, flex-start);
+
+            #form {
+                width: 40%;
+                margin-right: 7%;
+                #contact-form {
+                    width: 100%;
+
+                    $i: 1;
+                    @while $i <= 4 {
+                        .input-#{$i} {
+                            @if $i <= 3 {@include form-item (calc(100% - 20px), 35px, 15px, 0 10px);}
+                            @else {
+                                width: 18%;
+                                height: 53px;
+                                @include font (18px, 500);
+                                background-color: $black;
+                                color: $red;
+                                border: 0;
+                                border-radius: 15px;
+
+                                &:hover {
+                                    background-color: $red;
+                                    color: $black;
+                                }
+                            }
+                        }
+                        $i: $i + 1;
+                    }
+
+                    textarea {@include form-item (calc(100% - 20px), 200px, 15px, 10px);}
+
+                    ::placeholder {font-size: 18px;}
+                    :focus {
+                        font-size: 18px;
+                        outline-color: $red;
+                    }
+                }
+            }
+            
+            #contact-informations {
+                width: 25%;
+                @include position (relative, 0);
+                top: 39px;
+
+                .contact-information {
+                    width: 100%;
+                    @include flex-container (row, flex-start, center);
+
+                    &:nth-of-type(2) {margin: 15px 0;}
+
+                    .information-icon {
+                        @include square (70px);
+                        @include flex-container (row, center, center);
+                        i {font-size: 28px;}
+                    }
+
+                    .information {
+                        margin-left: 5%;
+                        p {font-size: 20px;}
+                    }
+                }
+
+                #social-media {
+                    width: 100%;
+                    margin-top: 50px;
+                    ul {
+                        li {
+                            margin-right: 20px;
+
+                            &:last-child {margin-right: 0;}
+
+                            a {
+                                @include square (60px);
+                                font-size: 20px;
+                                @include flex-container (row, center, center);
+                                @include clip-path (circle(49% at 50% 50%));
+                                background-color: $blue;
+                                i {
+                                    font-size: 25px;
+                                    color: $grey;
+                                }
+
+                                &:hover {background-color: $white;}
+                            }
+
+                            &:hover {
+                                & .fa-facebook-f {color: #4267b2;}
+
+                                & .fa-instagram {
+                                    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
+                                    -webkit-background-clip: text;
+                                    background-clip: text;
+                                    -webkit-text-fill-color: transparent;
+                                }
+
+                                & .fa-twitter {color: #1da1f2;}
+                                & .fa-linkedin-in {color: #0077b5;}
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        #back-on-top {
+            width: auto;
+            @include position (absolute, 0);
+            right: 50px;
+            bottom: 3%;
+            text-align: center;
+
+            i {
+                font-size: 25px;
+                color: $red;
+            }
+
+            p {
+                margin-top: 15px;
+                @include font (18px, 500);
+                text-transform: capitalize;
+                a {color: $black;}
+            }
+        }
+    }
+
+}
+
+// FOOTER
+#footer {
+    width: 100%;
+    @include flex-container (row, center, center);
+    flex-wrap: wrap;
+    padding: 20px 0;
+    text-align: center;
+    background-color: $black;
+
+    #copyright {
+        width: 100%;
+        margin-bottom: 15px;
+        p {
+            letter-spacing: 1px;
+            @include font (20px, 500);
+            color: $red;
+            a {color: $red;}
+        }
+    }
+
+    #links {
+        width: 100%;
+        ul {
+            li {
+                margin-right: 4%;
+                &:last-child {margin-right: 0;}
+                a {
+                    font-size: 18px;
+                    color: $transparentText;
+                }
+            }
+        }  
+    }
+}
