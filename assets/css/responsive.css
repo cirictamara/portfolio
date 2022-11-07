@@ -1,0 +1,26 @@
+/* Desktop uređaji (do 1024px) */
+
+@media screen and (max-width: 1440px) {
+    #footer {width: 83% !important;}
+}
+
+
+@media screen and (max-width: 1400px) {
+    #logo {width: 200px;}
+}
+
+/*- Tablet uređaji (od 768px do 1024px) */
+
+@media screen and (max-width: 1024px) {
+    #btn-open-nav-menu {display: block !important;}
+    #header-nav-menu {display: none !important;}
+}
+
+@media screen and (max-width: 991px) {
+    #footer {
+        width: 90% !important;
+        margin-top: 10px !important;
+    } 
+}
+
+/* Mobilni uređaji (od 768px do 320px)
