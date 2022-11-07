@@ -211,7 +211,7 @@ window.onload = function() {
                              </header>
                              <main>`;
                 for (let p of el.paragraphs) 
-                    html += `<p class = "text-gray fs-16">${p}</p>`;
+                    html += `<p class = "text-gray fs-15">${p}</p>`;
                 html += `</main>
                      </article>`;
             }
