@@ -4,15 +4,15 @@ let url = window.location.pathname;
 let navigationLinks = new Array(
     // Header Navigation
     {name: "Gift Boxes", href: "", element: "header"},
-    {name: "Products", href: "/C:/Users/Korisnik%207/Desktop/Popkakery%20(NOVO)/category.html", element: "header"},
+    {name: "Products", href: "/portfolio/category.html", element: "header"},
     {name: "Corporate", href: "", element: "header"},
     {name: "FAQs", href: "", element: "header"},
-    {name: "Contact Us", href: "/C:/Users/Korisnik%207/Desktop/Popkakery%20(NOVO)/contact-us.html", element: "header"},
+    {name: "Contact Us", href: "/portfolio/contact-us.html", element: "header"},
     // Footer Navigation
     // (level 01)
-    {name: "About Us", href: "/C:/Users/Korisnik%207/Desktop/Popkakery%20(NOVO)/about-us.html", element: "footer", level: 1},
+    {name: "About Us", href: "/portfolio/about-us.html", element: "footer", level: 1},
     {name: "Delivery Info", href: "", element: "footer", level: 1},
-    {name: "Refund Policy", href: "/C:/Users/Korisnik%207/Desktop/Popkakery%20(NOVO)/devilery-refund-terms-privacy.html", element: "footer", level: 1},
+    {name: "Refund Policy", href: "/portfolio/devilery-refund-terms-privacy.html", element: "footer", level: 1},
     {name: "Refer a friend", href: "", element: "footer", level: 1},
     // (level 02)
     {name: "Terms &amp; Conditions", href: "", element: "footer", level: 2},
@@ -74,7 +74,7 @@ window.onload = function() {
     $(".social-media").html(displayList(socialMedia, true));
 
     // [index.html]
-    if (url == "/C:/Users/Korisnik%207/Desktop/Popkakery%20(NOVO)/" || url == "/C:/Users/Korisnik%207/Desktop/Popkakery%20(NOVO)/index.html") {
+    if (url == "/portfolio/" || url == "/portfolio/index.html") {
         // Section 02:  Benefits
         let benefits = new Array(
             {icon: "fa fa-heart-o", text: "best sweets you’ll ever taste"},
@@ -187,7 +187,7 @@ window.onload = function() {
         $("#instagram > main").html(displayArticles(instagram, false, false, "w-20"));
     } 
     // [devilery-refund-terms-privacy.html.html]
-    else if (url == "/C:/Users/Korisnik%207/Desktop/Popkakery%20(NOVO)/devilery-refund-terms-privacy.html") {
+    else if (url == "/portfolio/devilery-refund-terms-privacy.html") {
         let devileryRefundTermsPrivacy = new Array(
             {
                 title: "Lorem ipsum dolor sit amet consectetur",
@@ -219,7 +219,7 @@ window.onload = function() {
         });
     }
     // [about-us.html]
-    else if (url == "/C:/Users/Korisnik%207/Desktop/Popkakery%20(NOVO)/about-us.html") {
+    else if (url == "/portfolio/about-us.html") {
         // Section 02: Choose your favorite flavor
         $("#choose-favorite-flavor main").before(
             displaySectionHeader("Choose your favorite flavor", "Suspendisse leo eros, efficitur et ipsum at, consectetur congue augue. Sed pharetra libero mattis tempor mattis. Orci varius natoque penatibus et magnis dis parturient montes.", {name: "View our sweet kingdom", href: ""})
@@ -232,7 +232,7 @@ window.onload = function() {
         $("#instagram > main").html(displayArticles(instagram, false, false, "w-20"));
     }
     // [category.html]
-    else if (url == "/C:/Users/Korisnik%207/Desktop/Popkakery%20(NOVO)/category.html") {
+    else if (url == "/portfolio/category.html") {
         let filters = new Array(
             {name: "Product Search", items: null},
             {name: "Price", items: null},
@@ -305,7 +305,7 @@ function displayHeader() {
                 </span>
                 <!-- Logo -->
                 <div id = "logo">
-                    <a href = "/C:/Users/Korisnik%207/Desktop/Popkakery%20(NOVO)/index.html" class = "w-100">
+                    <a href = "/portfolio/index.html" class = "w-100">
                         <img src = "assets/img/logo.png" alt = "" />
                     </a>
                 </div>
@@ -408,7 +408,7 @@ function displayArticles(articles, slider = false, options = false, classes = ""
                          <span class = "rounded border-orange border position-relative">-</span>
                          <span data-product = "" class = "fs-15 rounded border-orange border position-relative">1</span>
                          <span class = "rounded border-orange border position-relative">+</span>
-                         <a id = "btn-add-to-cart" class = "btn bg-orange text-white rounded position-relative fs-14 position-relative" href = "/C:/Users/Korisnik%207/Desktop/Popkakery%20(NOVO)/product.html">
+                         <a id = "btn-add-to-cart" class = "btn bg-orange text-white rounded position-relative fs-14 position-relative" href = "/portfolio/product.html">
                              Add to cart <span class = "text-white fs-17">&#10095;</span>
                          </a>
                      </div>`;
