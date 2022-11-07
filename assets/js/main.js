@@ -207,7 +207,7 @@ window.onload = function() {
             for (let el of devileryRefundTermsPrivacy) {
                 html += `<article class = "col-10 mb-3 devilery-refund-term-privacy">
                              <header class = "mb-4">
-                                 <h4 class = "text-uppercase fs-25">${el.title}</h4>
+                                 <h4 class = "text-uppercase" style = "font-size: 22px">${el.title}</h4>
                              </header>
                              <main>`;
                 for (let p of el.paragraphs) 
