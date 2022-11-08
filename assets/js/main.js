@@ -210,7 +210,7 @@ window.onload = function() {
                              </header>
                              <main>`;
                 for (let p of el.paragraphs) 
-                    html += `<p class = "text-gray fs-16 text-justify">${p}</p>`;
+                    html += `<p class = "text-gray fs-16">${p}</p>`;
                 html += `</main>
                      </article>`;
             }
@@ -329,18 +329,18 @@ function displayFooter() {
     let html = `<!-- Level 01 -->
                 <div class = "row-12 d-flex flex-column flex-md-row justify-content-between align-items-center">
                     <!-- Left Side -->
-                    <div class = "col-12 col-md-7 d-flex flex-row flex-wrap align-items-center">
+                    <div id = "nav-side" class = "col-12 col-md-7 d-flex flex-column flex-md-row flex-wrap justify-content-center justify-content-md-start align-items-center">
                         <!-- Subscribe -->
-                        <div class = "d-flex flex-row align-items-center">
-                            <form action = "" method = "" id = "subscribe-form" name = "subscribe" class = "d-flex flex-row align-items-center">
+                        <div class = "d-flex flex-row align-items-center position-relative">
+                            <form action = "" method = "" id = "subscribe-form" name = "subscribe-form" class = "d-flex flex-row align-items-center">
                                 <input type = "email" id = "email" name = "email" class = "bg-transparent h-100 rounded border-orange fs-15" />
                                 <input type = "submit" name = "btn-subscribe" id = "btn-subscribe" value = "Subscribe" class = "h-100 text-uppercase fs-14 position-relative btn bg-orange text-white rounded position-relative" />
                             </form>
                         </div>
                         <!-- Social Media -->
-                        <nav class = "social-media"></nav>
+                        <nav class = "social-media my-3 my-md-0"></nav>
                         <!-- Navigation List -->
-                        <nav class = "mt-4 nav-pages">${displayList(navigationLinks.filter(link => link.element == "footer" && link.level == 1), false, "p-0")}</nav>
+                        <nav class = "mt-0 mt-md-4 nav-pages">${displayList(navigationLinks.filter(link => link.element == "footer" && link.level == 1), false, "p-0")}</nav>
                     </div>
                     <!-- Right Side -->
                     <div id = "phone-number" class = "d-flex flex-row align-items-center">
@@ -355,8 +355,8 @@ function displayFooter() {
                     <!-- Copyright -->
                     <small class = "text-gray fs-14 order-3 order-md-1">&copy; 2022 Popkakery&#8482; Products Limited. All rights reserved.</small>
                     <!-- Image -->
-                    <div class = "order-2">
-                        <img src = "assets/img/detail.jpg" alt = "" />
+                    <div id = "favicon" class = "order-2 mb-2 mt-4 mb-md-0 mt-md-0">
+                        <img src = "assets/img/detail.png" alt = "" />
                     </div>
                     <!-- Navigation List -->
                     <nav class = "nav-pages order-1 order-md-3">${displayList(navigationLinks.filter(link => link.element == "footer" && link.level == 2), false, "p-0 fs-14 text-gray")}</nav>
@@ -366,7 +366,7 @@ function displayFooter() {
 
 // Function 03: 
 function displayList(links, icons = false, classes) {
-    let html = `<ul class = "nav">`;
+    let html = `<ul class = "nav d-flex flex-row justify-content-center">`;
     for (let link of links) {
         html += `<li class = "nav-item ${icons ? "rounded-circle border border-orange" : ""}">
                      <a href = "${link.href == url ? "#" : link.href}" class = "nav-link ${classes} ${icons ? "h-100 w-100 d-flex flex-row justify-content-center align-items-center p-0" : ""}">
