@@ -56,6 +56,9 @@ window.onload = function() {
     displayHeader();
     // Footer
     displayFooter();
+	
+	addClasses(["#header"], ["row-12", "px-3", "px-sm-4", "py-4", "d-flex", "flex-row", "justify-content-between", "align-items-center"]);
+    addClasses(["#footer"], ["container-fluid", "w-75", "px-0", "px-sm-3", "px-md-5", "mb-3", "mt-4", "mt-md-5"]);
 
     // Responsive Navigation Menu
     $("#responsive-nav-menu > ul").html($("#header-nav-menu > ul").html());
