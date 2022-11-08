@@ -1,4 +1,58 @@
- // Header
+// VARIABLES
+let url = window.location.pathname;
+
+let navigationLinks = new Array(
+    // Header Navigation
+    {name: "Gift Boxes", href: "", element: "header"},
+    {name: "Products", href: "/portfolio/category.html", element: "header"},
+    {name: "Corporate", href: "", element: "header"},
+    {name: "FAQs", href: "", element: "header"},
+    {name: "Contact Us", href: "/portfolio/contact-us.html", element: "header"},
+    // Footer Navigation
+    // (level 01)
+    {name: "About Us", href: "/portfolio/about-us.html", element: "footer", level: 1},
+    {name: "Delivery Info", href: "", element: "footer", level: 1},
+    {name: "Refund Policy", href: "/portfolio/devilery-refund-terms-privacy.html", element: "footer", level: 1},
+    {name: "Refer a friend", href: "", element: "footer", level: 1},
+    // (level 02)
+    {name: "Terms &amp; Conditions", href: "", element: "footer", level: 2},
+    {name: "Cookie Policy", href: "", element: "footer", level: 2},
+    {name: "Private Policy", href: "", element: "footer", level: 2}
+);
+
+let socialMedia = new Array(
+    {icon: "fa fa-facebook-f", href: "https://www.facebook.com/"},
+    {icon: "fa fa-twitter", href: "https://www.twitter.com/"},
+    {icon: "fa fa-instagram", href: "https://www.instagram.com/"},
+    {icon: "fa fa-linkedin", href: "https://www.linkedin.com/"},
+    {icon: "fa fa-play", href: "https://www.youtube.com/"}
+);
+
+let articles = new Array(
+    // Section 04: Choose your favorite flavor 
+    {element: "choose-favorite-flavor", image: {src: "flavor.png", alt: ""}, details: {name: "Duis eget lectus", price: null}},
+    {element: "choose-favorite-flavor", image: {src: "flavor.png", alt: ""}, details: {name: "Nunc sollicitudin", price: null}},
+    {element: "choose-favorite-flavor", image: {src: "flavor.png", alt: ""}, details: {name: "Donec posuere", price: null}}, 
+    {element: "choose-favorite-flavor", image: {src: "flavor.png", alt: ""}, details: {name: "Praesent ultrices", price: null}},
+    // Section 05: Supersweet Gifts 
+    {element: "supersweet-gifts", image: {src: "flavor.png", alt: ""}, details: {name: "Duis eget lectus", price: 14.44}},
+    {element: "supersweet-gifts", image: {src: "flavor.png", alt: ""}, details: {name: "Nunc sollicitudin", price: 14.44}},
+    {element: "supersweet-gifts", image: {src: "flavor.png", alt: ""}, details: {name: "Donec posuere", price: 14.44}},
+    {element: "supersweet-gifts", image: {src: "flavor.png", alt: ""}, details: {name: "Praesent ultrices", price: 14.44}}
+);
+
+let instagram = new Array(
+    {src: "instagram.jpg", alt: ""},
+    {src: "instagram.jpg", alt: ""},
+    {src: "instagram.jpg", alt: ""},
+    {src: "instagram.jpg", alt: ""},
+    {src: "instagram.jpg", alt: ""}
+);
+
+// FUNCTIONS
+
+window.onload = function() {
+    // Header
     displayHeader();
     // Footer
     displayFooter();
@@ -239,7 +293,7 @@
             }
             return html;
         });
-    
+    }
 }
 
 // Function 01: 
@@ -250,7 +304,7 @@ function displayHeader() {
                 </span>
                 <!-- Logo -->
                 <div id = "logo">
-                    <a href = "/C:/Users/Korisnik%207/Desktop/Popkakery%20(NOVO)/index.html" class = "w-100">
+                    <a href = "/portfolio/index.html" class = "w-100">
                         <img src = "assets/img/logo.png" alt = "" />
                     </a>
                 </div>
