@@ -139,6 +139,8 @@ input, select, textarea, button {outline: none;}
     margin-right: 20px;
 }
 
+#header-nav-menu {margin-left: 9vw;}
+
 #cart-status {
     right: -5px;
     top: 1px;
@@ -157,7 +159,7 @@ body > nav.position-absolute li:not(li:last-child) {
 }
 
 #btn-close-nav-menu {
-    right: 40px;
+    right: 30px;
     top: 30px;
 }
 
