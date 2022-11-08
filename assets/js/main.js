@@ -1,73 +1,18 @@
-// VARIABLES
-let url = window.location.pathname;
-
-let navigationLinks = new Array(
-    // Header Navigation
-    {name: "Gift Boxes", href: "", element: "header"},
-    {name: "Products", href: "/portfolio/category.html", element: "header"},
-    {name: "Corporate", href: "", element: "header"},
-    {name: "FAQs", href: "", element: "header"},
-    {name: "Contact Us", href: "/portfolio/contact-us.html", element: "header"},
-    // Footer Navigation
-    // (level 01)
-    {name: "About Us", href: "/portfolio/about-us.html", element: "footer", level: 1},
-    {name: "Delivery Info", href: "", element: "footer", level: 1},
-    {name: "Refund Policy", href: "/portfolio/devilery-refund-terms-privacy.html", element: "footer", level: 1},
-    {name: "Refer a friend", href: "", element: "footer", level: 1},
-    // (level 02)
-    {name: "Terms &amp; Conditions", href: "", element: "footer", level: 2},
-    {name: "Cookie Policy", href: "", element: "footer", level: 2},
-    {name: "Private Policy", href: "", element: "footer", level: 2}
-);
-
-let socialMedia = new Array(
-    {icon: "fa fa-facebook-f", href: "https://www.facebook.com/"},
-    {icon: "fa fa-twitter", href: "https://www.twitter.com/"},
-    {icon: "fa fa-instagram", href: "https://www.instagram.com/"},
-    {icon: "fa fa-linkedin", href: "https://www.linkedin.com/"},
-    {icon: "fa fa-play", href: "https://www.youtube.com/"}
-);
-
-let articles = new Array(
-    // Section 04: Choose your favorite flavor 
-    {element: "choose-favorite-flavor", image: {src: "flavor.png", alt: ""}, details: {name: "Duis eget lectus", price: null}},
-    {element: "choose-favorite-flavor", image: {src: "flavor.png", alt: ""}, details: {name: "Nunc sollicitudin", price: null}},
-    {element: "choose-favorite-flavor", image: {src: "flavor.png", alt: ""}, details: {name: "Donec posuere", price: null}}, 
-    {element: "choose-favorite-flavor", image: {src: "flavor.png", alt: ""}, details: {name: "Praesent ultrices", price: null}},
-    // Section 05: Supersweet Gifts 
-    {element: "supersweet-gifts", image: {src: "flavor.png", alt: ""}, details: {name: "Duis eget lectus", price: 14.44}},
-    {element: "supersweet-gifts", image: {src: "flavor.png", alt: ""}, details: {name: "Nunc sollicitudin", price: 14.44}},
-    {element: "supersweet-gifts", image: {src: "flavor.png", alt: ""}, details: {name: "Donec posuere", price: 14.44}},
-    {element: "supersweet-gifts", image: {src: "flavor.png", alt: ""}, details: {name: "Praesent ultrices", price: 14.44}}
-);
-
-let instagram = new Array(
-    {src: "instagram.jpg", alt: ""},
-    {src: "instagram.jpg", alt: ""},
-    {src: "instagram.jpg", alt: ""},
-    {src: "instagram.jpg", alt: ""},
-    {src: "instagram.jpg", alt: ""}
-);
-
-// FUNCTIONS
-
-window.onload = function() {
-    // Header
+ // Header
     displayHeader();
     // Footer
     displayFooter();
 
     // Responsive Navigation Menu
     $("#responsive-nav-menu > ul").html($("#header-nav-menu > ul").html());
-    // Open Navigation Menu
+    // (1) Open Navigation Menu
     $("#btn-open-nav-menu").click(function() {
         removeClasses(["#responsive-nav-menu", "#btn-close-nav-menu"], ["d-none"]);
     });
-    // Close Navigation Menu
+    // (2) Close Navigation Menu
     $("#btn-close-nav-menu").click(function() {
         $(this).addClass("d-none");
         $("#responsive-nav-menu").addClass("d-none");
-        $("body").css("overflow-y", "scroll");
     });
 
     // Social Media
@@ -205,13 +150,13 @@ window.onload = function() {
         $("section > main > div").html(function() {
             let html = "";
             for (let el of devileryRefundTermsPrivacy) {
-                html += `<article class = "col-10 mb-3 devilery-refund-term-privacy">
+                html += `<article class = "col-11 col-sm-10 mb-3 devilery-refund-term-privacy">
                              <header class = "mb-4">
-                                 <h4 class = "text-uppercase" style = "font-size: 22px">${el.title}</h4>
+                                 <h4 class = "text-uppercase fs-25">${el.title}</h4>
                              </header>
                              <main>`;
                 for (let p of el.paragraphs) 
-                    html += `<p class = "text-gray fs-14">${p}</p>`;
+                    html += `<p class = "text-gray fs-16">${p}</p>`;
                 html += `</main>
                      </article>`;
             }
@@ -305,19 +250,19 @@ function displayHeader() {
                 </span>
                 <!-- Logo -->
                 <div id = "logo">
-                    <a href = "/portfolio/index.html" class = "w-100">
+                    <a href = "/C:/Users/Korisnik%207/Desktop/Popkakery%20(NOVO)/index.html" class = "w-100">
                         <img src = "assets/img/logo.png" alt = "" />
                     </a>
                 </div>
                 <!-- Navigation Menu -->
-                <nav id = "header-nav-menu" class = "col-6 nav-pages">${displayList(navigationLinks.filter(link => link.element == "header"))}</nav>
+                <nav id = "header-nav-menu" class = "col-lg-7 col-6 nav-pages d-flex flex-row align-items-center justify-content-start">${displayList(navigationLinks.filter(link => link.element == "header"))}</nav>
                 <div class = "d-flex flex-row align-items-center">
                     <!-- Login Button -->
                     <button type = "button" id = "btn-login" class = "btn bg-orange text-white rounded fs-14 position-relative">
                         <i class = "fa fa-user d-inline-block align-middle text-white"></i> Login
                     </button>
                     <!-- Cart Status -->
-                    <div class = "position-relative">
+                    <div id = "cart" class = "position-relative">
                         <i class = "fa fa-shopping-bag"></i>
                         <span id = "cart-status" class = "position-absolute d-flex flex-row align-items-center justify-content-center bg-orange text-white rounded-circle circle">0</span>
                     </div>
