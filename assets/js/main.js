@@ -239,7 +239,7 @@
             }
             return html;
         });
-    }
+    
 }
 
 // Function 01: 
