@@ -73,8 +73,6 @@ input, select, textarea, button {outline: none;}
     background-color: var(--black) !important;
     border-color: var(--black) !important;
 }
-.text-justify {text-align: justify !important;}
-
 
 .py-6 {padding: 80px 0;}
 
@@ -114,7 +112,7 @@ input, select, textarea, button {outline: none;}
 .fs-25 {font-size: 25px !important;}
 .fs-20 {font-size: 20px !important;}
 .fs-17 {font-size: 17px !important;}
-.fs-16 {font-size: 15px !important;}
+.fs-16 {font-size: 16px !important;}
 .fs-15 {font-size: 15px !important;}
 .fs-14 {font-size: 14px !important;}
 .fs-12 {font-size: 12px !important;}
@@ -174,11 +172,11 @@ body > nav.position-absolute li:not(li:last-child) {
     margin-right: 35px;
 }
 
-#btn-subscribe {left: -10px;}
+#btn-subscribe {left: -5px;}
 
 #subscribe-form > #email {
     border: 2px solid var(--orange);
-    padding-right: 15px;
+    padding: 0 10px;
 }
 
 nav.social-media li {
@@ -196,6 +194,8 @@ nav.social-media li:not(li:last-of-type) {margin-right: 7px;}
     width: 60px;
     height: 60px;
 }
+
+#favicon {width: 70px;}
 
 #footer nav:not(nav.social-media) li:not(li:last-child) {
     border-right: 2px solid;
