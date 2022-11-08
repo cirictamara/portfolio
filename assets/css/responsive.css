@@ -27,15 +27,18 @@
 /* Mobilni uređaji (od 768px do 320px) */
 
 @media screen and (max-width: 768px) {
-
+    #nav-side > *, #subscribe-form, #subscribe-form > #email {width: 100% !important;}
+    #subscribe-form {margin-right: 0;}
     .fs-35 {font-size: 33px !important;}
     .fs-30 {font-size: 23px !important;}
     #logo {width: 160px !important;}
+    .fs-16 {font-size: 14.5px !important;}
     .fs-14 {font-size: 10px !important;}
-
+    #nav-side > div.position-relative {left: 2px;}
+    
     i.fa-user {font-size: 12px !important;}
-    .btn:not(#btn-have-question, #order-form button) {padding-top: 6px !important;}
-    #btn-login {padding: 1px 8px 4px !important;}
+    #subscribe-form > button.btn {padding-top: 10px !important;}
+    .btn:not(#btn-have-question, #order-form button)  {padding: 6px 8px 4px !important;}
     .circle {
         width: 14px;
         height: 14px;
